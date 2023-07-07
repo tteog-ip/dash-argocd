@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dash-front
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: front
+  template:
+    metadata:
+      labels:
+        app: front
+    spec:
+      containers:
+      - image: 728156710202.dkr.ecr.ap-northeast-2.amazonaws.com/dash-front:v0
+        name: dash-front
+        command: ["/bin/sh", "-ec", "nginx -g 'daemon off;'"]
+        envFrom:
+        - configMapRef:
+            name: dash-front-cm
+        ports:
+        - containerPort: 80
