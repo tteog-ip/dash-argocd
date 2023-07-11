@@ -13,7 +13,7 @@ spec:
         app: back
     spec:
       containers:
-      - image: 728156710202.dkr.ecr.ap-northeast-2.amazonaws.com/dash-back:v11
+      - image: 728156710202.dkr.ecr.ap-northeast-2.amazonaws.com/dash-back:v14
         name: dash-back
         command: ["/bin/sh", "-c", "sleep 5 && python manage.py makemigrations && python manage.py migrate && gunicorn config.wsgi --bind 0.0.0.0:8000"]
         envFrom:
